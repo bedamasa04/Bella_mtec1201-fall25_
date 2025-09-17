@@ -98,11 +98,13 @@ stroke(110);
 textSize(25);
 text('Edit   Mii', 52, 170);
 
-grow += grow
 
 fill(100);
 stroke(50);
 ellipse(80,320,grow, grow);
+
+grow += grow
+
 strokeWeight(8);
 stroke(180);
 line(80,300,80,290);
