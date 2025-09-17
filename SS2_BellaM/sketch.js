@@ -16,11 +16,14 @@ let w = 255
 let b = 0
 let threats = ['Do it.', 'Kill him.', 'Erase him.'];
 let grow = .05;
+let icon = 80;
 
 
 function setup() {
   createCanvas(720, 480);
-  
+
+
+
 }
 
 function draw() {
@@ -108,13 +111,10 @@ text('Edit   Mii', 52, 170);
 
 fill(100);
 stroke(50);
-ellipse(80,320,80,80);
 
-/*
-ellipse(80,320,grow, grow);
+ellipse(80,320,icon += grow);
 
-grow += grow
-*/
+
 
 strokeWeight(8);
 stroke(180);
