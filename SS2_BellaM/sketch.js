@@ -1,14 +1,21 @@
-//Bella M
-// 
+// Bella M
 
+// Matt dies.
+/*
+This relates to the theme of nostalgia because it emulates the Mii Channel for the Wii. 
+Growing up I loved making miis for everyone I knew and just making my own little characters.
+In class when you demonstrated the mouseX and mouseY variables and made an ellipse follow 
+the mouse it reminded me of how you can grab a mii's head and shake em around.
+*/
+
+'Press mouse if you need encouragement'
 
 
 
 let w = 255
 let b = 0
-let n = (+2);
 let threats = ['Do it.', 'Kill him.', 'Erase him.'];
-let grow = .0001;
+let grow = .05;
 
 
 function setup() {
@@ -101,9 +108,13 @@ text('Edit   Mii', 52, 170);
 
 fill(100);
 stroke(50);
+ellipse(80,320,80,80);
+
+/*
 ellipse(80,320,grow, grow);
 
 grow += grow
+*/
 
 strokeWeight(8);
 stroke(180);
