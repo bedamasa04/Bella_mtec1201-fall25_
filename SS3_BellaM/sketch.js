@@ -9,7 +9,7 @@ the mouse it reminded me of how you can grab a mii's head and shake em around.
 */
 
 'Press mouse if you need encouragement'
-'Press left and right keys when promted with yes or no'
+'Press left and right keys when popup appears'
 
 
 let w = 255
