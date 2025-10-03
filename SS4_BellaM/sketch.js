@@ -102,6 +102,7 @@ function draw() {
   rect(648,432,72,48);
 
 
+//INTERACTABLES
 if (mouseX > 40 && mouseX < 120 && mouseY > 280 && mouseY < 360)
 {
   fill(25, 117, 120, 230);
