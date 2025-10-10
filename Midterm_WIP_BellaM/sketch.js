@@ -1,0 +1,409 @@
+/*
+I STILL NEED TO FIGURE OUT HOW TO MAKE A BUTTON
+ FIX THE TEXT ON THE ERASE MII FUNCTION
+
+
+*/
+
+let start;
+let edit;
+let erase;
+//let parade; 
+let shirt;
+let matt;
+let state = "menu";
+let w = 255
+let b = 0
+let pointer;
+let fist;
+let quit;
+let red;
+let orange;
+let yellow;
+let green;
+let greenDark;
+let blueDark;
+let blue;
+let pink;
+let purple;
+let brown;
+let white;
+let black;
+
+function preload ()
+{
+matt = loadImage("images/WS_Matt.png");
+pointer = loadImage("images/point.png");
+fist = loadImage("images/fist.png");
+}
+
+
+function setup()
+ {
+  createCanvas(720, 480);
+  red = (250, 58, 44);
+}
+
+function draw()
+ {
+  //menu();
+  //miiChannel();
+  //eraseMii();
+  editMii();
+  //mii();
+}
+
+function menu(x, y)
+{
+  background(255,242,201);
+  image(matt, -150, -30, matt.width * 2, matt.height * 1.25);//?
+  textAlign(CENTER);
+  textSize(58);//?
+  strokeWeight(8);//?
+  stroke(255, 43, 0);
+  fill(255, 128, 0);
+  text("YOU NEED TO STOP HIM", width / 2, 100);
+  fill(220);
+  stroke(0);
+  strokeWeight(2);
+  rect(0, 360, width, 120);
+  /*
+  start = createButton("Start");
+  start.position(width / 3, 370);
+  start.size(300, 80);
+  */
+  fill(245);
+
+  rect(225, 370, 300, 80, 20, 20, 20, 20);
+
+
+}
+
+function mii(x, y)
+{
+  //BODY
+fill(90);
+stroke(90);
+ellipse(mouseX, mouseY + 100,28,39);
+fill(227,103,39);
+stroke(227,103,39);
+rect(mouseX - 14, mouseY + 100,28,-60);
+
+strokeWeight(8);
+line(mouseX - 14, mouseY + 80, mouseX - 50, mouseY + 60);
+line(mouseX + 14, mouseY + 80, mouseX + 50, mouseY + 90);
+ellipse(mouseX + 50, mouseY + 90, 10,10);
+ellipse(mouseX - 50, mouseY + 60, 10, 10);
+stroke(90);
+line(mouseX + 7, mouseY + 110, mouseX + 30, mouseY + 150);
+line(mouseX - 7, mouseY + 110, mouseX - 30, mouseY + 150);
+fill(90);
+strokeWeight(3);
+ellipse(mouseX + 30, mouseY + 150, 20,10);
+ellipse(mouseX - 30, mouseY + 150, 20, 10);
+
+//HEAD
+fill(107,54,32);
+stroke(107,54,32);
+rect(mouseX - 32.5,mouseY + 10,65,40);
+ellipse(mouseX,mouseY + 10,65,45);
+ellipse(mouseX,mouseY + 50,65,45);
+
+
+//EYES
+fill(w);
+stroke(0);
+strokeWeight(2);
+ellipse(mouseX - 16.25, mouseY + 30,15,10);
+ellipse(mouseX + 16.25, mouseY + 30,15,10);
+
+fill(0);
+ellipse(mouseX - 16.25, mouseY + 29,5,5);
+ellipse(mouseX + 16.25, mouseY + 29,5,5);
+strokeWeight(4);
+curve(mouseX - 23.75, mouseY + 40, mouseX - 23.75, mouseY + 28, mouseX - 8.75, mouseY + 28, mouseX - 8.75, mouseY + 40);
+curve(mouseX + 23.75, mouseY + 40, mouseX + 23.75, mouseY + 28, mouseX + 8.75, mouseY + 28, mouseX + 8.75, mouseY + 40);
+
+
+//BEARD
+stroke(94,51,29);
+fill(107,54,32);
+strokeWeight(7);
+curve(mouseX - 27, mouseY, mouseX - 26, mouseY + 61, mouseX + 26, mouseY + 61, mouseX + 27, mouseY);
+
+stroke(0);
+fill(0);
+strokeWeight(4);
+ellipse(mouseX, mouseY + 65,30,35);
+
+fill(107,54,32);
+stroke(107,54,32);
+strokeWeight(0);
+ellipse(mouseX, mouseY + 60,20,20);
+
+fill(b);
+triangle(mouseX, mouseY + 67, mouseX - 1.5, mouseY + 70, mouseX + 1.5, mouseY + 70);
+triangle(mouseX - 3, mouseY + 67, mouseX - 1.5, mouseY + 70, mouseX - 6, mouseY + 70);
+triangle(mouseX - 3, mouseY + 67, mouseX - 1.5, mouseY + 70, mouseX - 6, mouseY + 70);
+triangle(mouseX + 3, mouseY + 67, mouseX + 1.5, mouseY + 70, mouseX + 6, mouseY + 70);
+
+
+//nose
+fill(94,51,29);
+stroke(b);
+strokeWeight(2);
+curve(mouseX - 16, mouseY, mouseX - 7, mouseY + 45, mouseX + 7, mouseY + 45, mouseX + 16, mouseY);
+
+image(fist, mouseX - 10, mouseY - 40, fist.width / 1.75, fist.height / 1.75);
+}
+
+function miiChannel()
+{
+  background(220);
+  
+  //CHECKERS
+  fill(w);
+  stroke(w);
+  rect(0,0,72,48);
+  rect(0,96,72,48);
+  rect(0,192,72,48);
+  rect(0,288,72,48);
+  rect(0,384,72,48);
+
+  rect(72,48,72,48);
+  rect(72,144,72,48);
+  rect(72,240,72,48);
+  rect(72,336,72,48);
+  rect(72,432,72,48);
+
+  rect(144,0,72,48);
+  rect(144,96,72,48);
+  rect(144,192,72,48);
+  rect(144,288,72,48);
+  rect(144,384,72,48);
+
+  rect(216,48,72,48);
+  rect(216,144,72,48);
+  rect(216,240,72,48);
+  rect(216,336,72,48);
+  rect(216,432,72,48);
+
+  rect(288,0,72,48);
+  rect(288,96,72,48);
+  rect(288,192,72,48);
+  rect(288,288,72,48);
+  rect(288,384,72,48);
+
+  rect(360,48,72,48);
+  rect(360,144,72,48);
+  rect(360,240,72,48);
+  rect(360,336,72,48);
+  rect(360,432,72,48);
+
+  rect(432,0,72,48);
+  rect(432,96,72,48);
+  rect(432,192,72,48);
+  rect(432,288,72,48);
+  rect(432,384,72,48);
+
+  rect(504,48,72,48);
+  rect(504,144,72,48);
+  rect(504,240,72,48);
+  rect(504,336,72,48);
+  rect(504,432,72,48);
+
+  rect(576,0,72,48);
+  rect(576,96,72,48);
+  rect(576,192,72,48);
+  rect(576,288,72,48);
+  rect(576,384,72,48);
+
+  rect(648,48,72,48);
+  rect(648,144,72,48);
+  rect(648,240,72,48);
+  rect(648,336,72,48);
+  rect(648,432,72,48);
+
+  //ICONS
+fill(100);
+stroke(50);
+strokeWeight(4);
+ellipse(80,160,80,80);
+fill(150);
+stroke(200);
+ellipse(80,160,50,50);
+fill(220);
+stroke(110);
+textSize(25);
+text('Edit   Mii', 52, 170);
+
+fill(100);
+stroke(50);
+ellipse(80,320,80,80);
+strokeWeight(8);
+stroke(180);
+line(80,300,80,290);
+stroke(80);
+line(80,350,80,340);
+stroke(140);
+line(60,320,50,320);
+stroke(140);
+line(100,320,110,320);
+stroke(160);
+line(93,307,100,300);
+stroke(120);
+line(96,337,102,342);
+stroke(160);
+line(67,307,60,300);
+stroke(120);
+line(65,337,60,342);
+stroke(110);
+fill(220);
+strokeWeight(4);
+text('Erase   Mii', 52, 330);
+
+fill(150);
+stroke(120);
+strokeWeight(4);
+ellipse(640,80,80,80);
+fill(210);
+stroke(200);
+triangle(620,70,630,95,610,95);
+triangle(640,70,630,95,650,95);
+triangle(660,70,650,95,670,95);
+ellipse(640,70,15,15);
+ellipse(660,70,15,15);
+ellipse(620,70,15,15);
+stroke(110);
+fill(220);
+strokeWeight(4);
+text('Send  to', 570, 70);
+text('Mii  Parade', 540, 100);
+
+mii();
+}
+
+function eraseMii()
+{
+   background(220);
+  
+  //CHECKERS
+  fill(w);
+  stroke(w);
+  rect(0,0,72,48);
+  rect(0,96,72,48);
+  rect(0,192,72,48);
+  rect(0,288,72,48);
+  rect(0,384,72,48);
+
+  rect(72,48,72,48);
+  rect(72,144,72,48);
+  rect(72,240,72,48);
+  rect(72,336,72,48);
+  rect(72,432,72,48);
+
+  rect(144,0,72,48);
+  rect(144,96,72,48);
+  rect(144,192,72,48);
+  rect(144,288,72,48);
+  rect(144,384,72,48);
+
+  rect(216,48,72,48);
+  rect(216,144,72,48);
+  rect(216,240,72,48);
+  rect(216,336,72,48);
+  rect(216,432,72,48);
+
+  rect(288,0,72,48);
+  rect(288,96,72,48);
+  rect(288,192,72,48);
+  rect(288,288,72,48);
+  rect(288,384,72,48);
+
+  rect(360,48,72,48);
+  rect(360,144,72,48);
+  rect(360,240,72,48);
+  rect(360,336,72,48);
+  rect(360,432,72,48);
+
+  rect(432,0,72,48);
+  rect(432,96,72,48);
+  rect(432,192,72,48);
+  rect(432,288,72,48);
+  rect(432,384,72,48);
+
+  rect(504,48,72,48);
+  rect(504,144,72,48);
+  rect(504,240,72,48);
+  rect(504,336,72,48);
+  rect(504,432,72,48);
+
+  rect(576,0,72,48);
+  rect(576,96,72,48);
+  rect(576,192,72,48);
+  rect(576,288,72,48);
+  rect(576,384,72,48);
+
+  rect(648,48,72,48);
+  rect(648,144,72,48);
+  rect(648,240,72,48);
+  rect(648,336,72,48);
+  rect(648,432,72,48);
+
+  fill(25, 117, 120, 230);
+  stroke(162, 194, 199);
+  rect(25, 25, 670, 430, 50, 50, 50, 50);
+  noFill;
+  rect(30, 30, 660, 420, 50, 50, 50, 50);
+  
+  fill(231, 249, 255);
+  stroke(220);
+  textSize(30);
+  textAlign(LEFT);
+  text("Are you sure you want to", 200, 160);
+  text("erase this Mii?", 200, 200);
+
+  rect(50, 350, 300, 80, 20, 20, 20, 20);
+  stroke(110);
+  textSize(40);
+  strokeWeight(2);
+  text("Do not erase", 80, 400);
+  stroke(220);
+  rect(370, 350, 300, 80, 20, 20, 20, 20);
+  stroke(110);
+  text("Erase", 470, 400);
+}
+
+function editMii()
+{
+background(250)
+
+//tabs
+rect(30, -10, 660, 110, 10);
+rect(40, -10, 66, 90, 10);
+rect(111.75, -10, 66, 90, 10);
+rect(183.5, -10, 66, 90, 10);
+rect(255.25, -10, 66, 90, 10);
+rect(327, -10, 66, 90, 10);
+rect(398.75, -10, 66, 90, 10);
+rect(470.5, -10, 66, 90, 10);
+rect(542.25, -10, 66, 90, 10);
+rect(614, -10, 66, 90, 10);
+
+
+//PROFILE SETTINGS
+
+
+}
+
+function late()
+{
+  if (millis() > 60000)
+{
+image(matt, -660, -700, matt.width * 4, matt.width * 3);
+fill(255,0,10);
+stroke(0);
+textAlign(CENTER)
+text("Too late.", width / 2, height / 2)
+}
+}
