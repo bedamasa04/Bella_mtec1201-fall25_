@@ -1,56 +1,150 @@
+//Bella Martinez-Sager
+//TITLE: STOP MATT
+'USE THE MOUSE TO POINT AND CLICK'
+
+
+
+
+//THE SOUND FUNCTIONS DONT WORK AND SOME OF THE INTERACTABLE THINGS I WANTED TO ADD WEREN'T WORKING EITHER
+'IM SORRY THIS HAS TAKEN SO LONG TO SUBMIT, ITS TECHNICALLY UNFINSHED'
 /*
-I STILL NEED TO FIGURE OUT HOW TO MAKE A BUTTON
- FIX THE TEXT ON THE ERASE MII FUNCTION
-
-
+ALL AUDIO CODE COMES FROM THE CODING TRAIN
+NONE OF IT WORKS THOUGH IM VERY CONFUSED AND DONT KNOW HOW TO FIX IT
 */
+//https://www.youtube.com/watch?v=Pn1g1wjxl_0&list=PLRqwX-V7Uu6aFcVjlDAkkGIixw70s7jpW
 
-let start;
-let edit;
-let erase;
-//let parade; 
-let shirt;
+//let shirt;
 let matt;
+let utopia;
 let state = "menu";
 let w = 255
 let b = 0
 let pointer;
 let fist;
-let quit;
+let shirt;
 let red;
 let orange;
 let yellow;
+let lime;
 let green;
-let greenDark;
-let blueDark;
 let blue;
+let cyan;
 let pink;
 let purple;
 let brown;
 let white;
 let black;
+let Plaza;
+let doom;
+let maker;
+let eraseMusic;
+let credits;
+let threats = ['You cant.', 'Too late.', 'Should have been faster.', 'You were too weak.']
 
-function preload ()
+
+function preload()
 {
 matt = loadImage("images/WS_Matt.png");
 pointer = loadImage("images/point.png");
 fist = loadImage("images/fist.png");
+utopia = loadImage("images/utopia.webp");
+
 }
 
 
 function setup()
  {
   createCanvas(720, 480);
-  red = (250, 58, 44);
+  red = color(219,59,55);
+  orange = color(227,103,39);
+  yellow = color(233,208,24);
+  lime = color(187,235,64);
+  green = color(36,109,27);
+  cyan = color(129,213,233);
+  blue = color(32,92,194);
+  pink = color(227,91,135);
+  purple = color(142,74,176);
+  brown = color(133,69,41);
+  white = color(250);
+  black = color(20);
+  shirt = [red, orange, yellow, lime, green, cyan, blue, pink, purple, brown, white, black]
+  noCursor();
+
+  doom = loadSound("Doom.mp3", loaded);
+Plaza = loadSound("Plaza.mp3", loaded);
+doom = loadSound("Doom.mp3", loaded);
+maker = loadSound("Maker.mps", loaded);
+eraseMusic = loadSound("Parade.mp3", loaded);
+credits = loadSound("Credits.mp3", loaded);
+
+
 }
+
+function loaded()
+{
+   if (state === "menu")
+ {
+ doom.play();
+}
+ else if (state === "miiChannel")
+ {
+  Plaza.loop();
+ }
+ else if (state === "editMii")
+ {
+maker.loop();  
+}
+ else if (state === "eraseMii")
+ {
+  eraseMusic.loop();
+}
+ else if (state === "win")
+ {
+  credits.loop();
+ }
+ else if (state == "late")
+ {
+  late();
+ }
+}
+
 
 function draw()
  {
-  //menu();
-  //miiChannel();
-  //eraseMii();
+ if (state == "menu")
+ {
+  menu();
+  
+  image(pointer, mouseX, mouseY, pointer.width / 15, pointer.height / 15);
+ }
+ else if (state == "miiChannel")
+ {
+  miiChannel();
+ }
+ else if (state == "editMii")
+ {
   editMii();
-  //mii();
+  image(pointer, mouseX, mouseY, pointer.width / 15, pointer.height / 15);
+ }
+ else if (state == "eraseMii")
+ {
+  eraseMii();
+  image(pointer, mouseX, mouseY, pointer.width / 15, pointer.height / 15);
+ }
+ else if (state == "win")
+ {
+  win();
+ }
+ 
+ late();
+
+ /*
+ textSize(15)
+strokeWeight(1)
+stroke(0)
+fill(0)
+text(mouseX + "," + mouseY, 30, 20)
+*/
 }
 
 function menu(x, y)
@@ -67,19 +161,34 @@ function menu(x, y)
   stroke(0);
   strokeWeight(2);
   rect(0, 360, width, 120);
-  /*
-  start = createButton("Start");
-  start.position(width / 3, 370);
-  start.size(300, 80);
-  */
   fill(245);
 
-  rect(225, 370, 300, 80, 20, 20, 20, 20);
+  stroke(220);
+  strokeWeight(5);
+  rect(225, 380, 300, 80, 20, 20, 20, 20);
+  stroke(0);
+  strokeWeight(2);
+  textAlign(LEFT);
+  textSize(30);
+  fill(black);
+  text("Click to start", 290, 430);
 
+  if (mouseX > 225 && mouseY > 380 && mouseX < 525 && mouseY < 460)
+  {
+    stroke(110);
+  strokeWeight(5);
+   fill(245);
+    rect(215, 370, 320, 100, 20);
+    stroke(0);
+  strokeWeight(2);
+    fill(black);
+    textSize(40);
+  text("Click to start", 270, 430);
 
+  }
 }
 
-function mii(x, y)
+function miiMouse(x, y)
 {
   //BODY
 fill(90);
@@ -160,7 +269,6 @@ image(fist, mouseX - 10, mouseY - 40, fist.width / 1.75, fist.height / 1.75);
 function miiChannel()
 {
   background(220);
-  
   //CHECKERS
   fill(w);
   stroke(w);
@@ -225,6 +333,7 @@ function miiChannel()
   rect(648,432,72,48);
 
   //ICONS
+  textAlign(LEFT);
 fill(100);
 stroke(50);
 strokeWeight(4);
@@ -280,13 +389,13 @@ strokeWeight(4);
 text('Send  to', 570, 70);
 text('Mii  Parade', 540, 100);
 
-mii();
+miiMouse();
 }
 
 function eraseMii()
 {
    background(220);
-  
+
   //CHECKERS
   fill(w);
   stroke(w);
@@ -363,47 +472,341 @@ function eraseMii()
   text("Are you sure you want to", 200, 160);
   text("erase this Mii?", 200, 200);
 
+  stroke(220);
+  strokeWeight(5);
   rect(50, 350, 300, 80, 20, 20, 20, 20);
   stroke(110);
   textSize(40);
-  strokeWeight(2);
   text("Do not erase", 80, 400);
   stroke(220);
   rect(370, 350, 300, 80, 20, 20, 20, 20);
   stroke(110);
   text("Erase", 470, 400);
+
+  if (mouseX > 50 && mouseY > 350 && mouseX < 330 && mouseY < 430)
+  {
+   rect(40, 340, 320, 100, 20, 20, 20, 20);
+  stroke(110);
+  textSize(50);
+  text("Do not erase", 60, 400);
+   }
+ else if (mouseX > 350 && mouseY > 350 && mouseX < 670 && mouseY < 430)
+ {
+  stroke(110);
+  textSize(50);
+  rect(360, 340, 320, 100, 20, 20, 20, 20);
+  text("Erase", 450, 400);
+   }
 }
 
 function editMii()
 {
-background(250)
-
-//tabs
+background(225, 245, 232);
+stroke(100);
+strokeWeight(4.5);
+fill(225);
+//TABS
+//info
 rect(30, -10, 660, 110, 10);
+fill(25, 117, 120, 230);
 rect(40, -10, 66, 90, 10);
+fill(white);
+stroke(white);
+ellipse(73, 60, 25, 25);
+stroke(25, 117, 120, 230);
+point(78, 57);
+point(68, 57);
+strokeWeight(3);
+curve(48, 45, 68, 64, 78, 64, 98, 45);
+strokeWeight(4.5);
+stroke(white);
+rect(46, 20, 54, 15, 20);
+triangle(70.5, 37, 72, 39, 73.5, 37);
+stroke(25, 117, 120, 230);
+strokeWeight(3);
+ellipse(55, 27, 10, 10);
+strokeWeight(4.5);
+point(68, 27);
+point(76, 27);
+point(84, 27);
+point(92, 27);
+
+//height
+fill(170);
+stroke(100);
 rect(111.75, -10, 66, 90, 10);
+fill(white);
+stroke(white);
+ellipse(144.75, 27, 15, 15);
+triangle(144.75, 36, 142, 40, 147.5, 40);
+rect(140.5, 43, 8.75, 15);
+rect(140.5, 58, .75, 15);
+rect(149, 58, -.75, 15);
+
+//head
+fill(170);
+stroke(100);
 rect(183.5, -10, 66, 90, 10);
+stroke(white);
+line(216, 74, 200, 55);
+line(216.5, 74, 233, 55);
+ellipse(216.5, 43, 40);
+strokeWeight(1);
+stroke(170);
+triangle(216.5, 70, 230, 55, 204, 55);
+strokeWeight(5);
+stroke(white);
+point(210, 46);
+point(223, 46);
+//curve(48, 45, 68, 64, 78, 64, 98, 45);
+strokeWeight(3.5);
+curve(200, 35, 210, 54, 223, 54, 233, 35);
+
+//hair
+fill(170);
+stroke(100);
+strokeWeight(4.5);
 rect(255.25, -10, 66, 90, 10);
+stroke(white);
+rect(271.75,  24, 33, 50, 45);
+curve(200, 55, 271.75, 50, 295, 26, 290, -10);
+curve(295, -10, 295, 26, 304, 42, 350, 70);
+
+
+
+//eyebrows
+fill(170);
+stroke(100);
 rect(327, -10, 66, 90, 10);
+
+//eyes
+fill(170);
+stroke(100);
 rect(398.75, -10, 66, 90, 10);
+
+//nose
+fill(170);
+stroke(100);
 rect(470.5, -10, 66, 90, 10);
+
+//mouth
+fill(170);
+stroke(100);
 rect(542.25, -10, 66, 90, 10);
+
+//details
+fill(170);
+stroke(100);
 rect(614, -10, 66, 90, 10);
 
+//SAVE BUTTON
+rect(40, 380, 160, 65, 10);
+textAlign(CENTER)
+textSize(30);
+fill(white);
+stroke(white);
+strokeWeight(2);
+text("Save", 120, 420);
+if (mouseX > 40 && mouseY > 380 && mouseX < 200 && mouseY < 445)
+{
+  fill(170);
+  stroke(100);
+  strokeWeight(4.5);
+  rect(30, 370, 180, 85, 10);
+  fill(white);
+  stroke(white);
+  textSize(40);
+  strokeWeight(2);
+  text("Save", 120, 425);
+}
 
-//PROFILE SETTINGS
 
+//SETTINGS
+strokeWeight(4.5);
+stroke(100);
+fill(225);
+rect(240, 130, 450, 380, 10);
+
+fill(190);
+stroke(190);
+rect(255, 145, 420, 72.5, 10);
+rect(270);
+
+rect(270, 181.25, 172.5, 30);
+
+rect(255, 232.5, 202.5, 72.5, 10);
+stroke(110);
+rect(305.625, 269, 101.25, 28, 10);
+
+stroke(190);
+rect(472.5, 232.5, 202.5, 72.5, 10);
+stroke(110);
+
+stroke(190);
+rect(255, 320, 202.5, 72.5, 10);
+stroke(110);
+
+fill(orange);
+rect(336.5, 345, 40, 40, 10);
+
+stroke(190);
+fill(190);
+rect(472.5, 320, 202.5, 72.5, 10);
+stroke(110);
+
+stroke(190);
+rect(255, 407.5, 420, 80, 10);
+stroke(110);
+
+mii();
 
 }
 
 function late()
 {
-  if (millis() > 60000)
+  if (millis() > 180000)
 {
+  frameRate(.05);
 image(matt, -660, -700, matt.width * 4, matt.width * 3);
 fill(255,0,10);
 stroke(0);
 textAlign(CENTER)
-text("Too late.", width / 2, height / 2)
+text(random(threats), width / 2, height / 2)
 }
+}
+
+
+function mii(x, y)
+{
+  //BODY
+fill(90);
+stroke(90);
+ellipse(108, 195 + 100,28,39);
+fill(orange);
+stroke(orange);
+rect(108 - 14, 195 + 100,28,-60);
+
+strokeWeight(8);
+line(108 - 14, 195 + 80, 108 - 50, 195 + 60);
+line(108 + 14, 195 + 80, 108 + 50, 195 + 90);
+ellipse(108 + 50, 195 + 90, 10,10);
+ellipse(108 - 50, 195 + 60, 10, 10);
+stroke(90);
+line(108 + 7, 195 + 110, 108 + 30, 195 + 150);
+line(108 - 7, 195 + 110, 108 - 30, 195 + 150);
+fill(90);
+strokeWeight(3);
+ellipse(108 + 30, 195 + 150, 20,10);
+ellipse(108 - 30, 195 + 150, 20, 10);
+
+//HEAD
+fill(107,54,32);
+stroke(107,54,32);
+rect(108 - 32.5,195 + 10,65,40);
+ellipse(108,195 + 10,65,45);
+ellipse(108,195 + 50,65,45);
+
+
+//EYES
+fill(w);
+stroke(0);
+strokeWeight(2);
+ellipse(108 - 16.25, 195 + 30,15,10);
+ellipse(108 + 16.25, 195 + 30,15,10);
+
+fill(0);
+ellipse(108 - 16.25, 195 + 29,5,5);
+ellipse(108 + 16.25, 195 + 29,5,5);
+strokeWeight(4);
+curve(108 - 23.75, 195 + 40, 108 - 23.75, 195 + 28, 108 - 8.75, 195 + 28, 108 - 8.75, 195 + 40);
+curve(108 + 23.75, 195 + 40, 108 + 23.75, 195 + 28, 108 + 8.75, 195 + 28, 108 + 8.75, 195 + 40);
+
+
+//BEARD
+stroke(94,51,29);
+fill(107,54,32);
+strokeWeight(7);
+curve(108 - 27, 195, 108 - 26, 195 + 61, 108 + 26, 195 + 61, 108 + 27, 195);
+
+stroke(0);
+fill(0);
+strokeWeight(4);
+ellipse(108, 195 + 65,30,35);
+
+fill(107,54,32);
+stroke(107,54,32);
+strokeWeight(0);
+ellipse(108, 195 + 60,20,20);
+
+fill(b);
+triangle(108, 195 + 67, 108 - 1.5, 195 + 70, 108 + 1.5, 195 + 70);
+triangle(108 - 3, 195 + 67, 108 - 1.5, 195 + 70, 108 - 6, 195 + 70);
+triangle(108 - 3, 195 + 67, 108 - 1.5, 195 + 70, 108 - 6, 195 + 70);
+triangle(108 + 3, 195 + 67, 108 + 1.5, 195 + 70, 108 + 6, 195 + 70);
+
+
+//nose
+fill(94,51,29);
+stroke(b);
+strokeWeight(2);
+curve(108 - 16, 195, 108 - 7, 195 + 45, 108 + 7, 195 + 45, 108 + 16, 195);
+}
+
+function win()
+{
+image(utopia, 0, 0, utopia.width / 1.5, utopia.height)
+}
+
+function mousePressed()
+{
+  if (state == "menu")
+  {
+    if (mouseX > 225 && mouseY > 370 && mouseX < 525 && mouseY < 450)
+    {
+      state = "miiChannel"
+  
+    }
+  }
+  else if (state == "miiChannel")
+  {
+    if (mouseX > 40 && mouseY > 120 && mouseX < 120 && mouseY < 200)
+    {
+      state = "editMii"
+    }
+    else if (mouseX > 40 && mouseY > 280 && mouseX < 120 && mouseY < 360)
+    {
+      state = "eraseMii"
+    }
+  }
+  else if (state == "editMii")
+  {rect(336.5, 345, 40, 40, 10);
+    /*if (mouseX > 336 && mouseY > 345 && mouseX < 376 && mouseY < 385)
+    {
+      shirt = random
+    } */
+    if (mouseX > 40 && mouseY > 380 && mouseX < 200 && mouseY < 445)
+    {
+      state = "miiChannel"
+    }
+  }
+  else if (state == "eraseMii")
+  {
+    if (mouseX > 50 && mouseY > 350 && mouseX < 350 && mouseY < 430)
+    {
+      state = "miiChannel"
+    }
+    else if (mouseX > 370 && mouseY > 350 && mouseX < 670 && mouseY < 430)
+    {
+      state = "win"
+    }
+  }
+  else if (state == "win")
+  {
+    state = "menu"
+  }
+  else if (state == "late")
+  {
+    state = "menu"
+  }
+
 }
